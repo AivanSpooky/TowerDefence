@@ -15,6 +15,8 @@ TagManager:
   - PointsNumber
   - Waypoint
   - LivesNumber
+  - EnemyClone
+  - Enemy1
   layers:
   - Default
   - TransparentFX

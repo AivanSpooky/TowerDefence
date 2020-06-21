@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour {
     // Walk speed that can be set in Inspector
     [SerializeField]
     private float moveSpeed = 2f;
-    private bool is_able_to_move = true;
+    public bool is_clone = false;
     private bool is_cloned = false;
     private int points_cost = 10;
     private int life_cost = -1;
@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint").OrderBy(go => go.name).ToArray();
-        //waypoints = GameObject.FindGameObjectsWithTag("Waypoint");
         UnityEngine.Debug.Log(GameObject.FindGameObjectsWithTag("Waypoint"));
         transform.position = waypoints[waypointIndex].GetComponent<Transform>().transform.position;
         waypointIndex += 1;
@@ -42,7 +41,7 @@ public class Enemy : MonoBehaviour {
         // Move Enemy
         GameObject NWave = GameObject.FindWithTag("NextWave");
         GameObject Enemy = GameObject.FindWithTag("Enemy1");
-        if (NWave.GetComponent<NextWave>().is_wave_started && gameObject.tag != "EnemyClone" && is_able_to_move)
+        if (NWave.GetComponent<NextWave>().is_wave_started && gameObject.tag != "EnemyClone" && is_clone)
         {
             Move();
         }
@@ -53,6 +52,7 @@ public class Enemy : MonoBehaviour {
             {
                 UnityEngine.Debug.Log(NWave.GetComponent<NextWave>().enemies);
                 var clone = Instantiate(Enemy, transform.position, Quaternion.identity) as GameObject;
+                clone.GetComponent<Enemy>().is_clone = true;
             }
             is_cloned = true;
         }
@@ -66,10 +66,6 @@ public class Enemy : MonoBehaviour {
         // If enemy reached last waypoint then it stops
         if (waypointIndex < waypoints.Length)
         {
-            //UnityEngine.Debug.Log(waypointIndex);
-            //UnityEngine.Debug.Log(transform.position);
-            // Move Enemy from current waypoint to the next one
-            // using MoveTowards method
             transform.position = Vector2.MoveTowards(transform.position,
                waypoints[waypointIndex].transform.position,
                moveSpeed * Time.deltaTime);
