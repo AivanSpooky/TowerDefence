@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour {
     private int points_cost = 10;
     private int life_cost = -1;
     private float waiting_time = 0f;
-
+    private int clonesNumber = 0;
     // Index of current waypoint from which Enemy walks
     // to the next one
 
@@ -46,16 +46,18 @@ public class Enemy : MonoBehaviour {
         {
             Move();
         }
-        if (NWave.GetComponent<NextWave>().is_wave_started && gameObject.tag == "EnemyClone" && !is_cloned)
+        if (NWave.GetComponent<NextWave>().is_wave_started && gameObject.tag == "EnemyClone" && clonesNumber <= NWave.GetComponent<NextWave>().all_enemies[0])
         {
-            UnityEngine.Debug.Log(NWave.GetComponent<NextWave>().enemies);
-            for (int i = 0; i < NWave.GetComponent<NextWave>().enemies; i++)
+            UnityEngine.Debug.Log(waiting_time);
+            waiting_time += Time.deltaTime;
+            if (waiting_time > 2)
             {
+                waiting_time = 0;
                 UnityEngine.Debug.Log(NWave.GetComponent<NextWave>().enemies);
                 var clone = Instantiate(Enemy, transform.position, Quaternion.identity) as GameObject;
                 clone.GetComponent<Enemy>().is_clone = true;
+                clonesNumber++;
             }
-            is_cloned = true;
         }
 
     }
@@ -63,7 +65,6 @@ public class Enemy : MonoBehaviour {
     // Method that actually make Enemy walk
     private void Move()
     {
-        waiting_time += Time.deltaTime;
         // If Enemy didn't reach last waypoint it can move
         // If enemy reached last waypoint then it stops
         if (waypointIndex < waypoints.Length)
