@@ -17,6 +17,8 @@ TagManager:
   - LivesNumber
   - EnemyClone
   - Enemy1
+  - Enemy
+  - EnemiesList
   layers:
   - Default
   - TransparentFX

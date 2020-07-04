@@ -32,7 +32,7 @@ public class Enemy : MonoBehaviour {
     // Use this for initialization
     void Start () {
         waypoints = GameObject.FindGameObjectsWithTag("Waypoint").OrderBy(go => go.name).ToArray();
-        UnityEngine.Debug.Log(GameObject.FindGameObjectsWithTag("Waypoint"));
+        //UnityEngine.Debug.Log(GameObject.FindGameObjectsWithTag("Waypoint"));
         transform.position = waypoints[waypointIndex].GetComponent<Transform>().transform.position;
         waypointIndex += 1;
     }
@@ -41,19 +41,19 @@ public class Enemy : MonoBehaviour {
 	void Update () {
         // Move Enemy
         GameObject NWave = GameObject.FindWithTag("NextWave");
-        GameObject Enemy = GameObject.FindWithTag("Enemy1");
+        GameObject Enemy = GameObject.FindWithTag("Enemy");
         if (NWave.GetComponent<NextWave>().is_wave_started && gameObject.tag != "EnemyClone" && is_clone)
         {
             Move();
         }
         if (NWave.GetComponent<NextWave>().is_wave_started && gameObject.tag == "EnemyClone" && clonesNumber <= NWave.GetComponent<NextWave>().all_enemies[0])
         {
-            UnityEngine.Debug.Log(waiting_time);
+            //UnityEngine.Debug.Log(waiting_time);
             waiting_time += Time.deltaTime;
-            if (waiting_time > 2)
+            if (waiting_time > 4)
             {
                 waiting_time = 0;
-                UnityEngine.Debug.Log(NWave.GetComponent<NextWave>().enemies);
+                //UnityEngine.Debug.Log(NWave.GetComponent<NextWave>().enemies);
                 var clone = Instantiate(Enemy, transform.position, Quaternion.identity) as GameObject;
                 clone.GetComponent<Enemy>().is_clone = true;
                 clonesNumber++;
@@ -72,7 +72,7 @@ public class Enemy : MonoBehaviour {
             transform.position = Vector2.MoveTowards(transform.position,
                waypoints[waypointIndex].transform.position,
                moveSpeed * Time.deltaTime);
-            UnityEngine.Debug.Log(waiting_time);
+            //UnityEngine.Debug.Log(waiting_time);
             // If Enemy reaches position of waypoint he walked towards
             // then waypointIndex is increased by 1
             // and Enemy starts to walk to the next waypoint
@@ -88,7 +88,7 @@ public class Enemy : MonoBehaviour {
             GameObject Lives = GameObject.FindWithTag("LivesNumber");
             NWave.GetComponent<NextWave>().enemies -= 1;
             Lives.GetComponent<LivesNumber>().lives += life_cost;
-            UnityEngine.Debug.Log(gameObject);
+            //UnityEngine.Debug.Log(gameObject);
             Destroy(gameObject);
         }
     }

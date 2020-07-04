@@ -752,7 +752,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 8e9a7bc32ca6fcc428029ebfa274bb44, type: 3}
   m_Color: {r: 0.9607844, g: 0.9607844, b: 0.9607844, a: 1}
   m_FlipX: 0
@@ -1311,7 +1311,7 @@ GameObject:
   - component: {fileID: 884021624}
   m_Layer: 0
   m_Name: 1
-  m_TagString: Enemy1
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1408,7 +1408,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884021623}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.108303, y: -6.5544777, z: 3409.4727}
+  m_LocalPosition: {x: -15.33, y: -6.53, z: 3409.4727}
   m_LocalScale: {x: 0.77723795, y: 0.77723795, z: 0.77723795}
   m_Children: []
   m_Father: {fileID: 1458471137}
@@ -2027,6 +2027,8 @@ GameObject:
   - component: {fileID: 1558977839}
   - component: {fileID: 1558977838}
   - component: {fileID: 1558977840}
+  - component: {fileID: 1558977841}
+  - component: {fileID: 1558977842}
   m_Layer: 0
   m_Name: tower-1
   m_TagString: Tower1
@@ -2091,7 +2093,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1558977837}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.903155, y: -6.1063404, z: 3409.1846}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2124,6 +2126,39 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.6197438, y: 1.5518594}
   m_EdgeRadius: 0
+--- !u!114 &1558977841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558977837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85cd20854b28bd14b815e4fc39109800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!50 &1558977842
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558977837}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 6
 --- !u!1001 &1577682820
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2573,7 +2608,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912444597}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.89, y: -5.18, z: 3409.4727}
+  m_LocalPosition: {x: -14.16, y: -5.2, z: 3409.4727}
   m_LocalScale: {x: 0.77723795, y: 0.77723795, z: 0.77723795}
   m_Children: []
   m_Father: {fileID: 1458471137}
